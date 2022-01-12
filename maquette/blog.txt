@@ -1,0 +1,15 @@
+chercher une utilisateur avec un id est contre intuitif: il faut le chercher avec son pseudo
+
+vérifier les numéros des status
+
+regarder comment faire le site en https
+
+finir l'SQL =>
+
+    - vérifier l'users
+    - faire forum (sujet / comment)
+    - ebauche d'encyclopedie
+
+faire migrer avec Sequelize
+
+finir le back
