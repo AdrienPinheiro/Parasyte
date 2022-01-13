@@ -1,23 +1,23 @@
 {
-    "development": {
-      "username": "root",
-      "password": "",
-      "database": "parasyte",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
-    },
-    "test": {
-      "username": "root",
-      "password": "",
-      "database": "parasytetest",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
-    },
-    "production": {
-      "username": "root",
-      "password": "",
-      "database": "parasyteprod",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
-    }
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "parasyte",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "parasyte_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "parasyte_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   }
+}

@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Users extends Model {
+  class Forum extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,32 +11,33 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.Users.hasMany(models.Forum, {
+      models.Forum.belongsTo(models.Users, {
         foreignKey: {
           name: 'id_user'
-        }})
-      models.Users.hasMany(models.Comment, {
+        },
+        onDelete: 'CASCADE'
+      });
+      models.Forum.hasMany(models.Comment, {
         foreignKey: {
-          name: 'id_user'
+          name: 'id_forum'
         }})
-      models.Users.hasMany(models.Commentary, {
+      models.Forum.hasMany(models.Commentary, {
         foreignKey: {
-          name: 'id_user'
+          name: 'id_forum'
         }})
-    }
+      }
   };
-  Users.init({
-    isAdmin: DataTypes.BOOLEAN,
-    firstname: DataTypes.STRING,
-    lastname: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    pseudo: DataTypes.STRING,
+  Forum.init({
+    id_user: DataTypes.INTERGER,
+    title: DataTypes.STRING,
+    message: DataTypes.STRING,
+    image: DataTypes.STRING,
+    video: DataTypes.STRING,
     createdAt: DataTypes.STRING,
     updatedAt: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Users',
+    modelName: 'Forum',
   });
-  return Users;
+  return Forum;
 };
