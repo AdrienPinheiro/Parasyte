@@ -11,6 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.Encyclopedia.hasMany(models.Users, {
+        foreingKey: {
+          allowNull: false,
+          key: 'id_user'
+        },
+        onDelete: 'NO ACTION'
+      })
     }
   };
   Encyclopedia.init({

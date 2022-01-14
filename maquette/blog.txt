@@ -4,6 +4,19 @@ vérifier les numéros des status
 
 regarder comment faire le site en https
 
+
+finir le back
+
+
+
+
+
+
+
+
+good: 
+
+
 finir l'SQL =>
 
     - vérifier l'users
@@ -11,5 +24,3 @@ finir l'SQL =>
     - ebauche d'encyclopedie
 
 faire migrer avec Sequelize
-
-finir le back
