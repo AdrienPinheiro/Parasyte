@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       models.Forum.hasMany(models.Comment, {
         foreignKey: {
-          name: 'id_forum'
+          name: 'id_comment'
         }})
       models.Forum.hasMany(models.Commentary, {
         foreignKey: {

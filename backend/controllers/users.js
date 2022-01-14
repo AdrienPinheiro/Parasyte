@@ -34,7 +34,7 @@ exports.signup = (req, res, next) => {
     User.findOne({attribute: ["email"], where: {email: email}})
     .then((user) =>{
         if(user){
-            return res.status(400).json({error: "Utilisateur déjà existant"})
+            return res.status(401).json({error: "Utilisateur déjà existant"})
         } else if(!user) {
             bcrypt.hash(password,10)
             .then(hash => {
@@ -48,7 +48,7 @@ exports.signup = (req, res, next) => {
                 });
                 user.save()
                     .then(() => res.status(201).json({message: 'Utilisateur créé !'}))
-                    .catch(error => res.status(400).json({error: "Erreur lors de l'enregistrement de l'utilisateur"}));
+                    .catch(error => res.status(409).json({error: "Erreur lors de l'enregistrement de l'utilisateur"}));
             })
             .catch(error => res.status(409).json({error: "Problème lors de l'enregistrement du mot de passe"}));
         }})
@@ -93,11 +93,38 @@ exports.login = (req, res, next) => {
     })
 }
 
-// Permet de rechercher un utilisateur
+// Permet d'acceder aux infos publique de la personne avec son pseudo
 
 exports.getOne = (req, res, next) => {
-    const userId = req.body.id
-    User.findOne({attribute: ['firstname', 'lastname', 'pseudo', 'isAdmin'], where: {id: userId}})
+    const user_pseudo = req.body.pseudo
+    User.findOne({attribute: ['pseudo', 'img_user', 'isAdmin', 'createdAt'], where: {pseudo: user_pseudo}})
     .then((user) => res.status(200).json({user}))
-    .catch(error => res.status(400).json({error}));
+    .catch(error => res.status(404).json({error}));
+}
+
+// Permet de changer ses informations dans les options
+
+exports.Option = (req, res, next) => {
+    const userId = req.params.id
+
+    User.update({
+        pseudo: req.body.pseudo,
+        img_user: req.body.img_user
+    },
+    {attribute: ['pseudo', 'img_user'], where: {id: userId}})
+    .then(() => res.status(200).json({message: "Modifications enregistrées"}))
+    .catch(error => res.status(500).json({error}));
+}
+
+// Permet à l'utilisateur de supprimer son compte et ses données
+
+exports.delete = (req, res, next) => {
+    const userId = req.params.id
+
+    User.findOne({attribute: ['id'], where: {id: userId}})
+    .then(user => {
+        User.destroy({attribute: ['id'], where: {id: userId}})
+        .then(() => res.status(200).json({message: "Profil supprimé"}))
+        .catch(err => res.status(400).json({err : "Erreur lors de la suppression, si le problème persiste, veuillez contacter le support"}))
+    })
 }

@@ -1,18 +1,6 @@
-chercher une utilisateur avec un id est contre intuitif: il faut le chercher avec son pseudo
-
 vérifier les numéros des status
 
-regarder comment faire le site en https
-
-
 finir le back
-
-
-
-
-
-
-
 
 good: 
 
@@ -24,3 +12,7 @@ finir l'SQL =>
     - ebauche d'encyclopedie
 
 faire migrer avec Sequelize
+
+regarder comment faire le site en https -> a la fin
+
+chercher une utilisateur avec un id est contre intuitif: il faut le chercher avec son pseudo -> fait (a vérifier)
