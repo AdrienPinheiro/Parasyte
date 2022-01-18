@@ -13,6 +13,10 @@ app.use(cors({credentials: true}));
 app.use(cookieParser());
 
 const usersRoutes = require('./routes/users');
+const forumRoutes = require('./routes/forum');
+const commentsRoutes = require('./routes/comments');
+const commentariesRoutes = require('./routes/commentaries');
+const encyclopediaRoutes = require('./routes/encyclopedia');
 
 // Connexion à la base de données
 
@@ -35,5 +39,9 @@ app.use(express.json());
 // Routes
 
 app.use('/', usersRoutes);
+app.use('/forum', forumRoutes);
+app.use('/forum/comment', commentsRoutes);
+app.use('/forum/comment/response', commentariesRoutes);
+app.use('/encyclopedia', encyclopediaRoutes);
 
 module.exports = app;

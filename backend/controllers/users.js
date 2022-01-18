@@ -104,7 +104,7 @@ exports.getOne = (req, res, next) => {
 
 // Permet de changer ses informations dans les options
 
-exports.Option = (req, res, next) => {
+exports.option = (req, res, next) => {
     const userId = req.params.id
 
     User.update({
