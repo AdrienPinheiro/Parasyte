@@ -1,36 +1,36 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Encyclopedia', {
+    await queryInterface.createTable('Forums', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      id_user: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
+      },
+      title: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      icon: {
+      message: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      description: {
-        allowNull: false,
+      image: {
+        allowNull: true,
         type: Sequelize.STRING
       },
-      sword: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN
-      },
-      axe: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN
-      },
-      bow: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN
+      video: {
+        allowNull: true,
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -43,6 +43,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Encyclopedia');
+    await queryInterface.dropTable('Forums');
   }
 };

@@ -1,39 +1,38 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Comment', {
+    await queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_user: {
+      isAdmin: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Users',
-          key:'id'
-        }
+        type: Sequelize.BOOLEAN
       },
-      id_forum: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Forum',
-          key: 'id'
-        }
-      },
-      message: {
+      firstname: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      image: {
-        allowNull: true,
+      lastname: {
+        allowNull: false,
         type: Sequelize.STRING
       },
-      video: {
-        allowNull: true,
+      email: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      password: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      pseudo: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      img_user: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -47,6 +46,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Comment');
+    await queryInterface.dropTable('Users');
   }
 };

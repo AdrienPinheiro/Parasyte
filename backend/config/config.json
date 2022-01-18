@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "parasyte",
+    "database": "parasyte_base",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

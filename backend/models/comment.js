@@ -11,20 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.Comment.belongsTo(models.Users, {
+      models.Comment.belongsTo(models.User, {
         foreignKey: {
-          allowNull: false,
-          name: 'id_user'
-        },
-        onDelete: 'CASCADE'
-      });
+          allowNull: false
+        }})
       models.Comment.belongsTo(models.Forum, {
         foreignKey: {
-          allowNull: false,
-          name: 'id_forum'
-        },
-        onDelete: 'CASCADE'
-      });
+          allowNull: false
+        }})
       models.Comment.hasMany(models.Commentary, {
         foreignKey: {
           name: 'id_comment'
@@ -36,9 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     id_forum: DataTypes.INTEGER,
     message: DataTypes.STRING,
     image: DataTypes.STRING,
-    video: DataTypes.STRING,
-    createdAt: DataTypes.STRING,
-    updatedAt: DataTypes.STRING
+    video: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Comment',

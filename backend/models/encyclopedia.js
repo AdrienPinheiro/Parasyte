@@ -11,24 +11,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.Encyclopedia.hasMany(models.Users, {
-        foreingKey: {
-          allowNull: false,
-          key: 'id_user'
-        },
-        onDelete: 'NO ACTION'
-      })
+    models.Encyclopedia.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }})
     }
   };
   Encyclopedia.init({
+    id_user: DataTypes.INTEGER,
     name: DataTypes.STRING,
     icon: DataTypes.STRING,
     description: DataTypes.STRING,
     sword: DataTypes.BOOLEAN,
     axe: DataTypes.BOOLEAN,
-    bow: DataTypes.BOOLEAN,
-    createdAt: DataTypes.STRING,
-    updatedAt: DataTypes.STRING
+    bow: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Encyclopedia',
