@@ -7,6 +7,12 @@ const auth = require("../middleware/auth");
 
 // Router
 
+router.post('/post', forumCtrl.post);
 
+router.get('/all', forumCtrl.getAll);
+
+router.put('/modify', forumCtrl.modify);
+
+router.delete('/delete', forumCtrl.delete);
 
 module.exports = router;
